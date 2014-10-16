@@ -1,0 +1,70 @@
+﻿@model BrnMall.Web.Models.AjaxProductConsultListModel
+@{
+    Layout = null;
+}
+<ul class="zixun">
+@foreach (ProductConsultInfo info in Model.ProductConsultList)
+{
+    <li>
+        <div class="zixunInfo">
+            <em>用户：@info.ConsultNickName</em><span>@info.ConsultTime</span><div class="clear">
+            </div>
+        </div>
+        <div class="zixunCon">
+            咨询内容： @info.ConsultMessage</div>
+        <div class="zixunReCon">
+            <em>咨询回复：@info.ReplyMessage</em><span>@info.ReplyTime</span><div class="clear">
+            </div>
+        </div>
+    </li>
+}
+</ul>
+<div>
+@for (int i = 1; i <= Model.PageModel.TotalPages; i++)
+{
+<a href="javascript:getProductConsultList(@Model.Pid, 0, '', @i)">第 @i 页</a>
+}
+</div>
+<div>
+<form name="consultProductFrom" action="">
+    <input type="hidden" name="pid" value="@Model.Pid" />
+    <table width="710" border="0" cellspacing="5" cellpadding="0">
+    <tr>
+        <td width="64" align="right">咨询类型：</td>
+        <td width="631">
+        @{
+        int consultTypeIndex = 1;
+        foreach (ProductConsultTypeInfo info in Model.ProductConsultTypeList)
+        {
+        @:<input name="consultTypeId" type="radio" value="@info.ConsultTypeId" @if(consultTypeIndex == 1){ <text>checked="checked"</text> } /> @info.Title
+        consultTypeIndex++;
+        }
+        }
+        </td>
+    </tr>
+    <tr>
+        <td align="right" valign="top">咨询内容：</td>
+        <td>
+        <textarea name="consultMessage" class="inputBorder" style="height:50px; width:620px;"></textarea>
+        </td>
+    </tr>
+    @if (Model.IsVerifyCode)
+    { 
+    <tr>
+        <td colspan="2">
+            <div style="padding-left:15px; text-align:left; float:left;">
+            验证码：<input type="text" name="verifyCode" class="inputBorder" style="width:50px; margin-left:5px;"/>
+            <img class="captcha" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" />
+            </div>
+        </td>
+    </tr>
+    }
+    <tr>
+        <td></td>
+        <td>
+        <a href="javascript:consultProduct(uid)">提交咨询</a>
+        </td>
+    </tr>
+    </table>
+    </form>
+</div>

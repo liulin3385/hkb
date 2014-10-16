@@ -1,0 +1,5 @@
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EmailStrategy.DotNet.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EmailStrategy.DotNet.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EmailStrategy.DotNet\obj\Release\BrnMall.EmailStrategy.DotNet.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EmailStrategy.DotNet\obj\Release\BrnMall.EmailStrategy.DotNet.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EmailStrategy.DotNet\obj\Release\BrnMall.EmailStrategy.DotNet.csprojResolveAssemblyReference.cache

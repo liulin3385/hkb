@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31F3CC01-15D1-4528-AF8A-B74281F4D19E}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BrnMall.Web</RootNamespace>
+    <AssemblyName>BrnMall.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="fastJSON">
+      <HintPath>..\..\RefDLL\fastJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CouponController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\ToolController.cs" />
+    <Compile Include="Controllers\UCenterController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\CatalogModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\HelpModel.cs" />
+    <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
+    <Compile Include="Models\StoreModel.cs" />
+    <Compile Include="Models\UCenterModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSS\all.css" />
+    <Content Include="CSS\g_222.css" />
+    <Content Include="CSS\g_css.css" />
+    <Content Include="CSS\in.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\aboutpic.png" />
+    <Content Include="Images\ad.jpg" />
+    <Content Include="Images\add.jpg" />
+    <Content Include="Images\add_qq.jpg" />
+    <Content Include="Images\adpic1.jpg" />
+    <Content Include="Images\adpic2.jpg" />
+    <Content Include="Images\adpic3.jpg" />
+    <Content Include="Images\banbg.jpg" />
+    <Content Include="Images\banner.jpg" />
+    <Content Include="Images\bg-b.jpg" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Images\bg2.jpg" />
+    <Content Include="Images\bz_zx1.jpg" />
+    <Content Include="Images\bz_zx2.jpg" />
+    <Content Include="Images\bz_zx3.jpg" />
+    <Content Include="Images\bz_zx4.png" />
+    <Content Include="Images\cart.jpg" />
+    <Content Include="Images\cc1.jpg" />
+    <Content Include="Images\cksp.jpg" />
+    <Content Include="Images\ckxg.jpg" />
+    <Content Include="Images\ckxx.jpg" />
+    <Content Include="Images\content.jpg" />
+    <Content Include="Images\cp1.jpg" />
+    <Content Include="Images\cp2.jpg" />
+    <Content Include="Images\cp_t1.jpg" />
+    <Content Include="Images\cp_t10.jpg" />
+    <Content Include="Images\cp_t2.jpg" />
+    <Content Include="Images\cp_t3.jpg" />
+    <Content Include="Images\cp_t4.jpg" />
+    <Content Include="Images\cp_t5.jpg" />
+    <Content Include="Images\cp_t6.png" />
+    <Content Include="Images\cp_t7.png" />
+    <Content Include="Images\cp_t8.png" />
+    <Content Include="Images\cp_t9.png" />
+    <Content Include="Images\daochu.jpg" />
+    <Content Include="Images\daochu2.jpg" />
+    <Content Include="Images\daochu3.jpg" />
+    <Content Include="Images\daochu4.jpg" />
+    <Content Include="Images\dd1.jpg" />
+    <Content Include="Images\dd2.jpg" />
+    <Content Include="Images\dd3.jpg" />
+    <Content Include="Images\dd4.jpg" />
+    <Content Include="Images\dd_bg1.jpg" />
+    <Content Include="Images\dd_bg2.jpg" />
+    <Content Include="Images\dd_p1.jpg" />
+    <Content Include="Images\denglu.jpg" />
+    <Content Include="Images\dot1.jpg" />
+    <Content Include="Images\dot2.jpg" />
+    <Content Include="Images\dot3.jpg" />
+    <Content Include="Images\dot4.jpg" />
+    <Content Include="Images\dotbg1.jpg" />
+    <Content Include="Images\dotbg2.jpg" />
+    <Content Include="Images\dy.jpg" />
+    <Content Include="Images\dz_a1.jpg" />
+    <Content Include="Images\dz_a2.jpg" />
+    <Content Include="Images\dz_a3.jpg" />
+    <Content Include="Images\fenlei_bg.png" />
+    <Content Include="Images\fk1.jpg" />
+    <Content Include="Images\fk10.png" />
+    <Content Include="Images\fk11.jpg" />
+    <Content Include="Images\fk12.jpg" />
+    <Content Include="Images\fk2.jpg" />
+    <Content Include="Images\fk3.jpg" />
+    <Content Include="Images\fk4.jpg" />
+    <Content Include="Images\fk5.jpg" />
+    <Content Include="Images\fk6.jpg" />
+    <Content Include="Images\fk7.jpg" />
+    <Content Include="Images\fk8.jpg" />
+    <Content Include="Images\fk9.jpg" />
+    <Content Include="Images\ft1.jpg" />
+    <Content Include="Images\fuk2.jpg" />
+    <Content Include="Images\gd1.jpg" />
+    <Content Include="Images\gg1.jpg" />
+    <Content Include="Images\gg_ta1.png" />
+    <Content Include="Images\gg_ta2.jpg" />
+    <Content Include="Images\gg_ta3.jpg" />
+    <Content Include="Images\gg_ta4.jpg" />
+    <Content Include="Images\go.jpg" />
+    <Content Include="Images\grxx_t1.png" />
+    <Content Include="Images\grxx_t2.png" />
+    <Content Include="Images\grzx_t.jpg" />
+    <Content Include="Images\gx_lt1.png" />
+    <Content Include="Images\gx_lt2.jpg" />
+    <Content Include="Images\g_aboutpic.png" />
+    <Content Include="Images\g_ad.jpg" />
+    <Content Include="Images\g_ad1.jpg" />
+    <Content Include="Images\g_ad2.jpg" />
+    <Content Include="Images\g_adpic1.jpg" />
+    <Content Include="Images\g_adpic2.jpg" />
+    <Content Include="Images\g_adpic3.jpg" />
+    <Content Include="Images\g_banner.jpg" />
+    <Content Include="Images\g_cptjp1.jpg" />
+    <Content Include="Images\g_cptjp2.jpg" />
+    <Content Include="Images\g_cptjp3.jpg" />
+    <Content Include="Images\g_dianhua.jpg" />
+    <Content Include="Images\g_ecode.jpg" />
+    <Content Include="Images\g_fenlei_bg.png" />
+    <Content Include="Images\g_fenlei_menubg.png" />
+    <Content Include="Images\g_go.jpg" />
+    <Content Include="Images\g_index_ad1.jpg" />
+    <Content Include="Images\g_jyaq.jpg" />
+    <Content Include="Images\g_menmian_span_bg.png" />
+    <Content Include="Images\g_mjbz.jpg" />
+    <Content Include="Images\g_news_icon1.png" />
+    <Content Include="Images\g_news_icon2.png" />
+    <Content Include="Images\g_news_tit_bg.jpg" />
+    <Content Include="Images\g_news_tit_bg2.jpg" />
+    <Content Include="Images\g_pic1.jpg" />
+    <Content Include="Images\g_renzhengpic.png" />
+    <Content Include="Images\g_rzsjbg.png" />
+    <Content Include="Images\g_sheying.jpg" />
+    <Content Include="Images\g_tuijianbg.png" />
+    <Content Include="Images\g_tuijianpro.png" />
+    <Content Include="Images\g_whqc.jpg" />
+    <Content Include="Images\g_wh_product.jpg" />
+    <Content Include="Images\huifu.jpg" />
+    <Content Include="Images\icon1.jpg" />
+    <Content Include="Images\icon2.jpg" />
+    <Content Include="Images\icon4.jpg" />
+    <Content Include="Images\images\g_dianhua.jpg" />
+    <Content Include="Images\images\g_ecode.jpg" />
+    <Content Include="Images\img.jpg" />
+    <Content Include="Images\ind_t1.jpg" />
+    <Content Include="Images\ind_t2.jpg" />
+    <Content Include="Images\ind_t3.jpg" />
+    <Content Include="Images\ind_t4.jpg" />
+    <Content Include="Images\jr_tbg1.jpg" />
+    <Content Include="Images\jt1.jpg" />
+    <Content Include="Images\jt2.jpg" />
+    <Content Include="Images\jyaq.jpg" />
+    <Content Include="Images\kt1.jpg" />
+    <Content Include="Images\kt2.jpg" />
+    <Content Include="Images\kt3.jpg" />
+    <Content Include="Images\left.jpg" />
+    <Content Include="Images\liulan.jpg" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\logo2.jpg" />
+    <Content Include="Images\logo2.png" />
+    <Content Include="Images\l_tgsq.jpg" />
+    <Content Include="Images\mjbz.jpg" />
+    <Content Include="Images\m_t1.png" />
+    <Content Include="Images\m_t10.jpg" />
+    <Content Include="Images\m_t2.jpg" />
+    <Content Include="Images\m_t3.jpg" />
+    <Content Include="Images\m_t4.jpg" />
+    <Content Include="Images\m_t5.jpg" />
+    <Content Include="Images\m_t6.jpg" />
+    <Content Include="Images\m_t7.jpg" />
+    <Content Include="Images\m_t8.png" />
+    <Content Include="Images\m_t9.jpg" />
+    <Content Include="Images\navbj.png" />
+    <Content Include="Images\news_icon1.png" />
+    <Content Include="Images\news_icon2.png" />
+    <Content Include="Images\news_tit_bg.jpg" />
+    <Content Include="Images\new_add.jpg" />
+    <Content Include="Images\n_t1.jpg" />
+    <Content Include="Images\n_t2.jpg" />
+    <Content Include="Images\n_t3.png" />
+    <Content Include="Images\pic1.jpg" />
+    <Content Include="Images\qqoauth.png" />
+    <Content Include="Images\qrsh.jpg" />
+    <Content Include="Images\renzhengpic.png" />
+    <Content Include="Images\right.jpg" />
+    <Content Include="Images\rzsjbg.png" />
+    <Content Include="Images\rzsj_t1.png" />
+    <Content Include="Images\rzsj_t10.png" />
+    <Content Include="Images\rzsj_t11.png" />
+    <Content Include="Images\rzsj_t12.png" />
+    <Content Include="Images\rzsj_t13.png" />
+    <Content Include="Images\rzsj_t2.jpg" />
+    <Content Include="Images\rzsj_t3.jpg" />
+    <Content Include="Images\rzsj_t4.jpg" />
+    <Content Include="Images\rzsj_t5.jpg" />
+    <Content Include="Images\rzsj_t6.jpg" />
+    <Content Include="Images\rzsj_t7.jpg" />
+    <Content Include="Images\rzsj_t8.jpg" />
+    <Content Include="Images\rzsj_t9.jpg" />
+    <Content Include="Images\rz_sj1.png" />
+    <Content Include="Images\rz_sj2.png" />
+    <Content Include="Images\rz_sj3.jpg" />
+    <Content Include="Images\rz_sj4.jpg" />
+    <Content Include="Images\rz_sj5.jpg" />
+    <Content Include="Images\rz_sj6.jpg" />
+    <Content Include="Images\sc1.png" />
+    <Content Include="Images\sc2.png" />
+    <Content Include="Images\sc3.png" />
+    <Content Include="Images\sc4.png" />
+    <Content Include="Images\sc5.jpg" />
+    <Content Include="Images\sc6.png" />
+    <Content Include="Images\sc7.png" />
+    <Content Include="Images\search.jpg" />
+    <Content Include="Images\searchBT.jpg" />
+    <Content Include="Images\shanchu.jpg" />
+    <Content Include="Images\shanchu2.jpg" />
+    <Content Include="Images\shanchu3.jpg" />
+    <Content Include="Images\shanchu4.jpg" />
+    <Content Include="Images\shanchu5.jpg" />
+    <Content Include="Images\share.jpg" />
+    <Content Include="Images\sheying.jpg" />
+    <Content Include="Images\sj1.png" />
+    <Content Include="Images\sj2.jpg" />
+    <Content Include="Images\sjt.jpg" />
+    <Content Include="Images\sjtda.jpg" />
+    <Content Include="Images\sptbune_tbg.jpg" />
+    <Content Include="Images\sp_p1.jpg" />
+    <Content Include="Images\sqth.jpg" />
+    <Content Include="Images\submit.jpg" />
+    <Content Include="Images\sy_tb1.jpg" />
+    <Content Include="Images\sy_tb2.jpg" />
+    <Content Include="Images\sy_tb3.jpg" />
+    <Content Include="Images\s_t1.png" />
+    <Content Include="Images\s_t2.png" />
+    <Content Include="Images\s_t3.png" />
+    <Content Include="Images\s_t4.png" />
+    <Content Include="Images\s_t5.png" />
+    <Content Include="Images\s_t6.png" />
+    <Content Include="Images\s_t7.jpg" />
+    <Content Include="Images\s_t8.jpg" />
+    <Content Include="Images\t.jpg" />
+    <Content Include="Images\tbg1.jpg" />
+    <Content Include="Images\temai.jpg" />
+    <Content Include="Images\th_t1.jpg" />
+    <Content Include="Images\th_t2.jpg" />
+    <Content Include="Images\th_t3.jpg" />
+    <Content Include="Images\tijiao.jpg" />
+    <Content Include="Images\tijiao2.jpg" />
+    <Content Include="Images\tijiao3.jpg" />
+    <Content Include="Images\tjsq.jpg" />
+    <Content Include="Images\tuijianbg.png" />
+    <Content Include="Images\tuijianpro.png" />
+    <Content Include="Images\txkdh.jpg" />
+    <Content Include="Images\upload.jpg" />
+    <Content Include="Images\weihuo.jpg" />
+    <Content Include="Images\whqc.jpg" />
+    <Content Include="Images\wh_product.jpg" />
+    <Content Include="Images\xg1.jpg" />
+    <Content Include="Images\xg2.jpg" />
+    <Content Include="Images\xgsx_b1.jpg" />
+    <Content Include="Images\xgsx_b10.jpg" />
+    <Content Include="Images\xgsx_b11.jpg" />
+    <Content Include="Images\xgsx_b12.jpg" />
+    <Content Include="Images\xgsx_b13.jpg" />
+    <Content Include="Images\xgsx_b2.jpg" />
+    <Content Include="Images\xgsx_b3.jpg" />
+    <Content Include="Images\xgsx_b4.jpg" />
+    <Content Include="Images\xgsx_b5.jpg" />
+    <Content Include="Images\xgsx_b6.jpg" />
+    <Content Include="Images\xgsx_b7.jpg" />
+    <Content Include="Images\xgsx_b8.jpg" />
+    <Content Include="Images\xgsx_b9.jpg" />
+    <Content Include="Images\xgsx_p1.jpg" />
+    <Content Include="Images\xiajia.jpg" />
+    <Content Include="Images\xiugai.jpg" />
+    <Content Include="Images\xiugai2.jpg" />
+    <Content Include="Images\xiugai3.jpg" />
+    <Content Include="Images\xiugai4.jpg" />
+    <Content Include="Images\xq1.jpg" />
+    <Content Include="Images\xx_t1.jpg" />
+    <Content Include="Images\xx_t10.jpg" />
+    <Content Include="Images\xx_t11.jpg" />
+    <Content Include="Images\xx_t12.jpg" />
+    <Content Include="Images\xx_t13.jpg" />
+    <Content Include="Images\xx_t14.png" />
+    <Content Include="Images\xx_t15.jpg" />
+    <Content Include="Images\xx_t2.jpg" />
+    <Content Include="Images\xx_t3.jpg" />
+    <Content Include="Images\xx_t4.jpg" />
+    <Content Include="Images\xx_t5.jpg" />
+    <Content Include="Images\xx_t6.jpg" />
+    <Content Include="Images\xx_t7.jpg" />
+    <Content Include="Images\xx_t8.jpg" />
+    <Content Include="Images\xx_t9.jpg" />
+    <Content Include="Images\yulan.jpg" />
+    <Content Include="Images\zbws.jpg" />
+    <Content Include="Images\zengjia.jpg" />
+    <Content Include="Images\zhuce.jpg" />
+    <Content Include="Images\zhuce_p1.jpg" />
+    <Content Include="Images\zhuce_p2.jpg" />
+    <Content Include="Images\zs1.jpg" />
+    <Content Include="Images\zx_dot1.jpg" />
+    <Content Include="Images\zx_dot2.jpg" />
+    <Content Include="Images\zx_dot3.jpg" />
+    <Content Include="Images\zx_dot4.jpg" />
+    <Content Include="Images\zx_p1.jpg" />
+    <Content Include="js\common.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.min.1.7.1.js" />
+    <Content Include="js\ljs.js" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\account.js" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\DD_belatedPNG.js" />
+    <Content Include="Scripts\dialog.js" />
+    <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\jquery.min.1.7.1.js" />
+    <Content Include="Scripts\ljs.js" />
+    <Content Include="Scripts\MagicZoom\magiczoom.css" />
+    <Content Include="Scripts\MagicZoom\mzp-packed-me.js" />
+    <Content Include="Scripts\MSClass.js" />
+    <Content Include="Scripts\order.js" />
+    <Content Include="Scripts\product.js" />
+    <Content Include="Scripts\region.js" />
+    <Content Include="Scripts\cart.js" />
+    <Content Include="Scripts\store.js" />
+    <Content Include="Scripts\ucenter.order.js" />
+    <Content Include="Scripts\ucenter.safe.js" />
+    <Content Include="Scripts\ucenter.user.js" />
+    <Content Include="Scripts\utils.js" />
+    <Content Include="Themes\Default\Theme.png" />
+    <Content Include="Themes\Default\Theme.xml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Credit.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\BrnMall.Core\BrnMall.Core.csproj">
+      <Project>{6B8E6156-1BD0-49E4-A693-A3F88025CF4C}</Project>
+      <Name>BrnMall.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\BrnMall.Services\BrnMall.Services.csproj">
+      <Project>{1323CA44-E7C4-47B1-A316-22E80777D885}</Project>
+      <Name>BrnMall.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrnMall.Web.Framework\BrnMall.Web.Framework.csproj">
+      <Project>{C28BA0E8-6095-4F37-8CAF-A014CBD43CB9}</Project>
+      <Name>BrnMall.Web.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Email.config" />
+    <Content Include="App_Data\Event.config" />
+    <Content Include="App_Data\InstalledPlugin.config" />
+    <Content Include="App_Data\IPData.config" />
+    <Content Include="App_Data\Mall.config" />
+    <Content Include="App_Data\NOSQL.config" />
+    <Content Include="App_Data\RDBS.config" />
+    <Content Include="App_Data\SMS.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Plugins\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cache\" />
+    <Folder Include="Plugins\bin\" />
+    <Folder Include="Upload\Advert\" />
+    <Folder Include="Upload\Banner\" />
+    <Folder Include="Upload\Brand\" />
+    <Folder Include="Upload\FriendLink\" />
+    <Folder Include="Upload\Help\" />
+    <Folder Include="Upload\News\" />
+    <Folder Include="Upload\Product\" />
+    <Folder Include="Upload\StoreRank\" />
+    <Folder Include="Upload\Store\Banner\" />
+    <Folder Include="Upload\Store\Logo\" />
+    <Folder Include="Upload\UserRank\" />
+    <Folder Include="Upload\User\" />
+    <Folder Include="Watermarks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\FindPwd.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPwd.cshtml" />
+    <Content Include="Views\Account\SelectFindPwdType.cshtml" />
+    <Content Include="Views\Help\Question.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\List.cshtml" />
+    <Content Include="Views\Shared\404.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Prompt.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\AjaxProductConsultList.cshtml" />
+    <Content Include="Views\Catalog\AjaxProductReviewList.cshtml" />
+    <Content Include="Views\Catalog\Brand.cshtml" />
+    <Content Include="Views\Catalog\Category.cshtml" />
+    <Content Include="Views\Catalog\Product.cshtml" />
+    <Content Include="Views\Catalog\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Cart\AddSuccess.cshtml" />
+    <Content Include="Views\Cart\AjaxIndex.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Snap.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Order\ConfirmOrder.cshtml" />
+    <Content Include="Views\Order\PaySuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Order\PayShow.cshtml" />
+    <Content Include="Views\Order\SubmitSuccess.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UCenter\CouponList.cshtml" />
+    <Content Include="Views\UCenter\FavoriteProductList.cshtml" />
+    <Content Include="Views\UCenter\OrderInfo.cshtml" />
+    <Content Include="Views\UCenter\OrderList.cshtml" />
+    <Content Include="Views\UCenter\PayCreditLogList.cshtml" />
+    <Content Include="Views\UCenter\ProductConsultList.cshtml" />
+    <Content Include="Views\UCenter\ProductReviewList.cshtml" />
+    <Content Include="Views\UCenter\ReviewOrder.cshtml" />
+    <Content Include="Views\UCenter\SafeInfo.cshtml" />
+    <Content Include="Views\UCenter\SafeSuccess.cshtml" />
+    <Content Include="Views\UCenter\SafeUpdate.cshtml" />
+    <Content Include="Views\UCenter\SafeVerify.cshtml" />
+    <Content Include="Views\UCenter\ShipAddressList.cshtml" />
+    <Content Include="Views\UCenter\UserInfo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\Default\Views\Index.cshtml" />
+    <Content Include="Themes\Default\Views\Class.cshtml" />
+    <Content Include="Themes\Default\Views\Details.cshtml" />
+    <Content Include="Themes\Default\Views\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Themes\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UCenter\FavoriteStoreList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Catalog\Topic.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1680</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

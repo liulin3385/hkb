@@ -1,0 +1,7 @@
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\bin\Release\BrnMall.Data.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\bin\Release\BrnMall.Data.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\bin\Release\BrnMall.Core.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\bin\Release\BrnMall.Core.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\obj\Release\BrnMall.Data.csprojResolveAssemblyReference.cache
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\obj\Release\BrnMall.Data.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Data\obj\Release\BrnMall.Data.pdb

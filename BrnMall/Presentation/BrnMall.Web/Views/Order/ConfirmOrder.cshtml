@@ -1,0 +1,319 @@
+﻿@model BrnMall.Web.Models.ConfirmOrderModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>确认订单-@{@WorkContext.MallConfig.SiteTitle}</title>
+    @WorkContext.MallConfig.SEOKeyword
+    @WorkContext.MallConfig.SEODescription
+    <link href="@{@WorkContext.CSSDir}/CSS/all.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@{@WorkContext.ScriptDir}/Scripts/utils.js"></script>
+    <script type="text/javascript" src="@{@WorkContext.ScriptDir}/Scripts/order.js"></script>
+    <script type="text/javascript" src="@{@WorkContext.ScriptDir}/Scripts/region.js"></script>
+</head>
+<body id="body">
+    <div id="topInfo">
+        <div class="box">
+            <div class="left">您好,欢迎访问 @WorkContext.MallConfig.MallName</div>
+            <div class="right">
+            您好 @WorkContext.NickName 
+            <a href="@Url.Action("Logout", "Account")" class="A_b">[退出]</a>
+            @if (WorkContext.PartUserInfo.StoreId > 1)
+            {
+            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "StoreAdmin" } })" class="A_b">[店铺管理]</a>
+            }
+            @if (WorkContext.MallAGid > 1)
+            {
+            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "MallAdmin" } })" class="A_b">[商城管理]</a>
+            }
+            <a href="@Url.Action("OrderList", "UCenter")" class="A_b">[我的订单]</a>
+            <a href="@Url.Action("Index", "Cart")" class="A_b">[购物车(@WorkContext.CartProductCount)]</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bigBox">
+        <div class="box" id="header">
+            <a href="#" id="logo" class="left"><img src="@{@WorkContext.ImageDir}/Images/logo.jpg" /></a>
+            <div id="search" class="right">
+                <input type="text" id="keyword" name="keyword" autocomplete="off" onkeydown="javascript:if(event.keyCode==13) mallSearch(document.getElementById('keyword').value);" value="@WorkContext.SearchWord" />
+                <input type="image" src="@{@WorkContext.ImageDir}/Images/searchBT.jpg" class="bt_b" onclick="mallSearch(document.getElementById('keyword').value)" />
+                <div class="clear">
+            </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="bigBox" id="nav">
+        <ul class="box">
+            @foreach (NavInfo info in WorkContext.NavList)
+            {
+            <li><a href="@info.Url">@info.Name</a></li>
+            }
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="box" id="content">
+
+    <div class="bilB1">
+    <div class="TradeTitle">
+    <div class="orderItemTitle"><div style=" float:left;">配送地址</div><a href="javascript:void(0)" onclick="getShipAddressList()" style=" margin-left:10px; float:left;">修改</a><div class="clear"></div></div>
+    <div class="clear"></div>
+    </div>
+    <div class="bilB1Con bilB">
+    <p id="shipAddressShowBlock">
+        @if (Model.DefaultFullShipAddressInfo != null)
+        {
+        @Model.DefaultFullShipAddressInfo.Consignee @Model.DefaultFullShipAddressInfo.Mobile
+        <br />
+        @Model.DefaultFullShipAddressInfo.ProvinceName @Model.DefaultFullShipAddressInfo.CityName @Model.DefaultFullShipAddressInfo.CountyName @Model.DefaultFullShipAddressInfo.Address
+        }
+        else
+        { 
+            @:您还没有配送地址，请先添加。<a href="javascript:void(0)" onclick="getShipAddressList()">点击添加</a>
+        }
+    </p>
+    <div class="clear"></div>
+        @if (Model.DefaultFullShipAddressInfo != null)
+        {
+        <input type="hidden" value="@Model.DefaultFullShipAddressInfo.SAId" name="saId" id="saId" />
+        }
+        else
+        { 
+        <input type="hidden" value="0" name="saId" id="saId" />
+        }
+        <table id="shipAddressListBlock" style="display:none;" width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+        </table>
+        <form name="addShipAddressForm" action="">
+        <table id="addShipAddressBlock" style="display:none;" width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+            <tr><td bgcolor="#ffffff" width="70px" align="right">昵称：</td><td bgcolor="#ffffff"><input name="alias" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">收货人：</td><td bgcolor="#ffffff"><input name="consignee" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">手机号：</td><td bgcolor="#ffffff"><input name="mobile" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">固定电话：</td><td bgcolor="#ffffff"><input name="phone" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">电子邮箱：</td><td bgcolor="#ffffff"><input name="email" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">邮政编码：</td><td bgcolor="#ffffff"><input name="zipcode" value="" /></td></tr>
+            <tr>
+            <td bgcolor="#ffffff" align="right">所在区域：</td>
+            <td bgcolor="#ffffff">
+            <select id="provinceId" name="provinceId">
+            <option selected="selected" value="-1">请选择</option>
+            </select>
+            <select id="cityId" name="cityId">
+            <option selected="selected" value="-1">请选择</option>
+            </select>
+            <select id="regionId" name="regionId">
+            <option selected="selected" value="-1">请选择</option>
+            </select>
+            </td>
+            </tr>
+            <tr><td bgcolor="#ffffff" align="right">详细地址：</td><td bgcolor="#ffffff"><input name="address" value="" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right">默认地址：</td><td bgcolor="#ffffff"><input type="checkbox" name="isDefault" /></td></tr>
+            <tr><td bgcolor="#ffffff" align="right"></td><td bgcolor="#ffffff" align="left"><a href="javascript:void(0)" onclick="javascript:addShipAddress()">添加地址</a></td></tr>
+        </table>
+        </form>
+    </div>
+    </div>
+
+    <div class="bilB1">
+    <div class="TradeTitle">
+    <div class="orderItemTitle"><div style=" float:left;">支付方式</div><a href="javascript:void(0)" onclick="getPayPluginList()" style=" margin-left:10px; float:left;">修改</a><div class="clear"></div></div>
+    <div class="clear"></div>
+    </div>
+    <div class="bilB1Con bilB">
+    <p id="payPluginShowBlock">
+        @if (Model.DefaultPayPluginInfo != null)
+        {
+            @Model.DefaultPayPluginInfo.FriendlyName  @Model.DefaultPayPluginInfo.Description
+        }
+        else
+        {
+            @:请选择支付方式。<a href="javascript:void(0)" onclick="getPayPluginList()">点击选择</a>
+        }
+    </p>
+    <div class="clear"></div>
+     @if (Model.DefaultPayPluginInfo != null)
+     {
+            <input type="hidden" value="@Model.DefaultPayPluginInfo.SystemName" name="payName" id="payName" />
+     }
+     else
+     {
+            <input type="hidden" value="" name="payName" id="payName" />
+     }
+    <table id="payPluginListBlock" style="display:none;" width="99%" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+    </table>
+    </div>
+    </div>
+
+    @foreach (StoreOrder item in Model.StoreOrderList)
+    {
+    <div class="bilB1">
+    <div class="TradeTitle">
+    <div class="orderItemTitle">@item.StoreInfo.Name</div>
+    <div class="clear"></div>
+    </div>
+    <div class="bilB1Con bilB">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="orderList">
+        <thead>
+          <tr bgcolor="#f4f3f3">
+            <td width="80">商品图片</td>
+            <td>商品名称</td>
+            <td width="120">价格</td>
+            <td width="80">商品数量</td>
+            <td width="120">金额小计</td>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderProductInfo info in item.OrderProductList)
+            {
+            <tr>
+                <td align="center"><img width="50px" height="50px" src="/Upload/Product/Show/Thumb30_30/@info.ShowImg"/></td>
+                <td align="center">@info.Name</td>
+                <td align="center">￥ @info.ShopPrice</td>
+                <td align="center">@info.RealCount</td>
+                <td align="center">￥@Html.Raw((info.DiscountPrice * info.BuyCount).ToString())</td>
+            </tr>
+            }
+        </tbody>
+        </table>
+    <div class="clear"></div>
+    </div>
+    </div>
+    }
+    
+    <div class="bilB1">
+    <div class="TradeTitle">
+    <div class="orderItemTitle">其他信息</div>
+    <div class="clear"></div>
+    </div>
+    <div class="bilB1Con bilB">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="orderOther">
+            <tr>
+                <td width="70">使用 @Model.PayCreditName:</td>
+                <td><input type="text" id="payCreditCount" name="payCreditCount" onblur="verifyPayCredit(@Model.UserPayCredits, @Model.MaxUsePayCredits )" />您当前可用 @Model.PayCreditName 为:@Model.UserPayCredits 个,此订单最大使用数量为: @Model.MaxUsePayCredits 个</td>
+            </tr>
+            <tr>
+                <td>使用优惠劵:</td>
+                <td>
+                <select name="couponId" id="couponId" onclick="getValidCouoponList()">
+                    <option selected="selected" value="0">选择优惠劵</option>
+                </select>
+                或者输入优惠劵号<input type="text" name="couponSN" id="couponSN"/>
+                </td>
+            </tr>
+            <tr>
+                <td>买家备注:</td>
+                <td><textarea name="buyerRemark" cols="80" rows="3" id="buyerRemark" style="width:500px;border:1px solid #ccc;"></textarea></td>
+            </tr>
+        </table>
+    <div class="clear"></div>
+    </div>
+    </div>
+    
+    <div class="bilB1">
+    <div class="TradeTitle">
+    <div class="orderItemTitle">订单汇总</div>
+    <div class="clear"></div>
+    </div>
+    <div class="bilB1Con bilB">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="orderSum">
+          <tr>
+            <td align="right">支付费用：<span>@Model.PayFee</span>元<br /></td>
+          </tr>
+          <tr>
+            <td valign="middle" class="orderSumCon">应付金额： <font color="red">￥<span>@Model.AllOrderAmount</span></font>元</td>
+          </tr>
+        </table>
+    <a href="javascript:submitOrder()" class="bt_b" style="float:right; margin-top:15px; padding:6px 30px;">提交订单</a>
+    @if (Model.IsVerifyCode)
+    { 
+    <div style="float:right; margin-top:14px;"><input type="text" name="verifyCode" id="verifyCode" autocomplete="off" style=" padding:6px 0px;"/></div>
+    <div style="float:right; margin-top:18px;"><img id="verifyImage" style="cursor:hand;" height="24" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" /></div>
+    }
+    <div class="clear"></div>
+    </div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+       <div id="footer" class="box">
+        <div class="boxInner">
+        @{
+            int flag = 1;
+            foreach (HelpInfo info in WorkContext.HelpList)
+            {
+                if (info.Pid != 0)
+                {
+                    if (info.Url.Length == 0)
+                    {
+                    <a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a>
+                    }
+                    else
+                    {
+                    <a href="@info.Url">@info.Title</a>
+                    }
+                }
+                else
+                {
+                    if (flag != 1)
+                    {
+                       @:</div>
+                    }
+                    @:<div class="footerBox"><h3>@info.Title</h3>
+                    flag++;
+                }
+            }
+            if (WorkContext.HelpList.Count > 0)
+            {
+                @:</div>
+            }
+            }
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="links">
+            @foreach (FriendLinkInfo info in WorkContext.FriendLinkList)
+            {
+            <a href="@info.Url" target="@info.Target" title="@info.Title">@info.Name</a> @:|
+            }
+        </div>
+        <div style=" text-align:center;">
+            共执行 @WorkContext.ExecuteCount 个查询，用时 @WorkContext.ExecuteTime 秒,会员 @WorkContext.OnlineMemberCount 人 游客 @WorkContext.OnlineGuestCount 人 共 @WorkContext.OnlineUserCount 人
+            <br />
+            程序版本 @WorkContext.MallVersion 版权所有 @WorkContext.MallCopyright
+        </div>
+        @Html.Raw(WorkContext.ExecuteDetail)
+        </div>
+<script type="text/javascript">
+    //绑定省列表的改变事件
+    Event.addHandler(document.getElementById("provinceId"), "change", function (event) {
+        var selectedProvinceId = getSelectedOption(this).value;
+        if (selectedProvinceId > 0) {
+            document.getElementById("regionId").innerHTML = "<option value='-1'>请选择</option>";
+            bindCityList(selectedProvinceId, document.getElementById("cityId"));
+        }
+    })
+
+
+    //绑定市列表的改变事件
+    Event.addHandler(document.getElementById("cityId"), "change", function (event) {
+        var selectedCityId = getSelectedOption(this).value;
+        if (selectedCityId > 0) {
+            bindCityList(selectedCityId, document.getElementById("regionId"));
+        }
+    })
+
+    //绑定省列表
+    bindProvinceList(document.getElementById("provinceId"), provinceId);
+
+    if (cityId > 0) {
+        bindCityList(provinceId, document.getElementById("cityId"), cityId);
+        bindCountyList(cityId, document.getElementById("regionId"), countyId);
+    }
+</script>
+@WorkContext.MallConfig.Script
+</body>
+</html>
