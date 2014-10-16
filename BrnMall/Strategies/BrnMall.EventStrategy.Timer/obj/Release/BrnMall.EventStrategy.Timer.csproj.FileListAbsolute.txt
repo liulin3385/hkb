@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Release\BrnMall.EventStrategy.Timer.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Release\BrnMall.EventStrategy.Timer.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Release\BrnMall.EventStrategy.Timer.csprojResolveAssemblyReference.cache

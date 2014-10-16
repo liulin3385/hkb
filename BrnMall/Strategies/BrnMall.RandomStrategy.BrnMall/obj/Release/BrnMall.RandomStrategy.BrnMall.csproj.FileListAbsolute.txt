@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.RandomStrategy.BrnMall.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.RandomStrategy.BrnMall.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RandomStrategy.BrnMall\obj\Release\BrnMall.RandomStrategy.BrnMall.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RandomStrategy.BrnMall\obj\Release\BrnMall.RandomStrategy.BrnMall.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RandomStrategy.BrnMall\obj\Release\BrnMall.RandomStrategy.BrnMall.csprojResolveAssemblyReference.cache

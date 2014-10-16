@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.ConfigStrategy.File.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.ConfigStrategy.File.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.ConfigStrategy.File\obj\Release\BrnMall.ConfigStrategy.File.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.ConfigStrategy.File\obj\Release\BrnMall.ConfigStrategy.File.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.ConfigStrategy.File\obj\Release\BrnMall.ConfigStrategy.File.csprojResolveAssemblyReference.cache

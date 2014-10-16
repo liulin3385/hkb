@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SMSStrategy.BrnMall.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SMSStrategy.BrnMall.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SMSStrategy.BrnMall\obj\Release\BrnMall.SMSStrategy.BrnMall.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SMSStrategy.BrnMall\obj\Release\BrnMall.SMSStrategy.BrnMall.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SMSStrategy.BrnMall\obj\Release\BrnMall.SMSStrategy.BrnMall.csprojResolveAssemblyReference.cache
