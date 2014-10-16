@@ -16,6 +16,7 @@
 *.db
 
 !BrnMall/RefDLL/*
+!BrnMall/RefDLL/ServiceStack.Redis/*
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
