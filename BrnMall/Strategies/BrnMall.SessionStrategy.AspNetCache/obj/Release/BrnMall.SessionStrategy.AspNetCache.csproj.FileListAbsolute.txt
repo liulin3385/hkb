@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SessionStrategy.AspNetCache.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SessionStrategy.AspNetCache.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Release\BrnMall.SessionStrategy.AspNetCache.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Release\BrnMall.SessionStrategy.AspNetCache.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Release\BrnMall.SessionStrategy.AspNetCache.csprojResolveAssemblyReference.cache

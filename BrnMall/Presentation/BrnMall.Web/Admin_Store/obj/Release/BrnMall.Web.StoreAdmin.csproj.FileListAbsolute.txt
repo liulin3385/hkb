@@ -1,5 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.Web.StoreAdmin.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.Web.StoreAdmin.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\StoreAdmin\obj\Release\BrnMall.Web.StoreAdmin.csprojResolveAssemblyReference.cache
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\StoreAdmin\obj\Release\BrnMall.Web.StoreAdmin.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\StoreAdmin\obj\Release\BrnMall.Web.StoreAdmin.pdb

@@ -1,9 +1,0 @@
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Services.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Services.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Core.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Data.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Core.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\bin\Release\BrnMall.Data.pdb
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\obj\Release\BrnMall.Services.csprojResolveAssemblyReference.cache
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\obj\Release\BrnMall.Services.dll
-C:\Users\ZhangMeng\Desktop\BrnMall\Libraries\BrnMall.Services\obj\Release\BrnMall.Services.pdb
