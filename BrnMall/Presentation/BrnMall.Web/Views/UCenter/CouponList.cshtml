@@ -1,0 +1,166 @@
+﻿@model BrnMall.Web.Models.CouponListModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>优惠劵-@{@WorkContext.MallConfig.SiteTitle}</title>
+    @WorkContext.MallConfig.SEOKeyword
+    @WorkContext.MallConfig.SEODescription
+    <link href="@{@WorkContext.CSSDir}/CSS/all.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body">
+    <div id="topInfo">
+        <div class="box">
+            <div class="left">您好,欢迎访问 @WorkContext.MallConfig.MallName</div>
+            <div class="right">
+            您好 @WorkContext.NickName 
+            <a href="@Url.Action("Logout", "Account")" class="A_b">[退出]</a>
+            @if (WorkContext.PartUserInfo.StoreId > 1)
+            {
+            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "StoreAdmin" } })" class="A_b">[店铺管理]</a>
+            }
+            @if (WorkContext.MallAGid > 1)
+            {
+            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "MallAdmin" } })" class="A_b">[商城管理]</a>
+            }
+            <a href="@Url.Action("OrderList", "UCenter")" class="A_b">[我的订单]</a>
+            <a href="@Url.Action("Index", "Cart")" class="A_b">[购物车(@WorkContext.CartProductCount)]</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="bigBox">
+        <div class="box" id="header">
+            <a href="#" id="logo" class="left"><img src="@{@WorkContext.ImageDir}/Images/logo.jpg" /></a>
+            <div id="search" class="right">
+                <input type="text" id="searchWord" value="@WorkContext.SearchWord" />
+                <input type="image" src="@{@WorkContext.ImageDir}/Images/searchBT.jpg" class="bt_b" onclick="window.location.href = '/search/?keyword='+encodeURIComponent(document.getElementById('searchWord').value)"/>
+                <div class="clear">
+            </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="bigBox" id="nav">
+        <ul class="box">
+            @foreach (NavInfo info in WorkContext.NavList)
+            {
+            <li><a href="@info.Url">@info.Name</a></li>
+            }
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="box" id="content">
+  <div class="left boxLeft">
+    <div class="bilBox">
+      <h2>会员中心</h2>
+      <div class="bilCon">
+        <ul class="menu">
+          <li><a href="@Url.Action("UserInfo")">账户信息</a></li>
+          <li><a href="@Url.Action("SafeInfo")">账户安全</a></li>
+          <li><a href="@Url.Action("OrderList")">我的订单</a></li>
+          <li><a href="@Url.Action("ShipAddressList")">收货地址</a></li>
+          <li><a href="@Url.Action("FavoriteProductList")">收藏商品</a></li>
+          <li><a href="@Url.Action("FavoriteStoreList")">收藏店铺</a></li>
+          <li><a href="@Url.Action("PayCreditLogList")">我的@{@WorkContext.PayCreditName}</a></li>
+          <li><a href="@Url.Action("CouponList")">优惠劵</a></li>
+          <li><a href="@Url.Action("ProductConsultList")">购买咨询</a></li>
+          <li><a href="@Url.Action("ProductReviewList")">商品评价</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="right boxRight">
+    <div class="bilB ucenterList">
+    <table width="100%">
+    <thead>
+  <tr bgcolor="#f4f3f3">
+    <td width="100px" align="left">编号</td>
+    <td align="left">店铺</td>
+    <td width="120px" align="left">类别</td>
+    <td width="80px" align="left">面值</td>
+    <td width="160px" align="left">有效期</td>
+  </tr>
+</thead>
+<tbody>
+    @foreach (DataRow row in Model.CouponList.Rows)
+    {
+    <tr>
+    <td align="left">@row["couponsn"]</td>
+    <td align="left">@row["storename"]</td>
+    <td align="left">@row["name"]</td>
+    <td align="left">@row["money"]</td>
+    <td align="center">
+      @if (row["usemode"].ToString() == "0")
+      {
+        @row["usestarttime"]<br />@row["useendtime"]
+      }
+      else
+      {
+        @row["activatetime"]<br />@TypeHelper.ObjectToDateTime(row["activatetime"]).AddDays(TypeHelper.ObjectToInt(row["useexpiretime"]))
+      }
+    </td>
+    </tr>
+    }
+</tbody>
+</table>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+      <div id="footer" class="box">
+        <div class="boxInner">
+        @{
+            int flag = 1;
+            foreach (HelpInfo info in WorkContext.HelpList)
+            {
+                if (info.Pid != 0)
+                {
+                    if (info.Url.Length == 0)
+                    {
+                    <a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a>
+                    }
+                    else
+                    {
+                    <a href="@info.Url">@info.Title</a>
+                    }
+                }
+                else
+                {
+                    if (flag != 1)
+                    {
+                       @:</div>
+                    }
+                    @:<div class="footerBox"><h3>@info.Title</h3>
+                    flag++;
+                }
+            }
+            if (WorkContext.HelpList.Count > 0)
+            {
+                @:</div>
+            }
+            }
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="links">
+            @foreach (FriendLinkInfo info in WorkContext.FriendLinkList)
+            {
+            <a href="@info.Url" target="@info.Target" title="@info.Title">@info.Name</a> @:|
+            }
+        </div>
+        <div style=" text-align:center;">
+            共执行 @WorkContext.ExecuteCount 个查询，用时 @WorkContext.ExecuteTime 秒,会员 @WorkContext.OnlineMemberCount 人 游客 @WorkContext.OnlineGuestCount 人 共 @WorkContext.OnlineUserCount 人
+            <br />
+            程序版本 @WorkContext.MallVersion 版权所有 @WorkContext.MallCopyright
+        </div>
+        @Html.Raw(WorkContext.ExecuteDetail)
+        </div>
+@WorkContext.MallConfig.Script
+</body>
+</html>

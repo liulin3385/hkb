@@ -1,0 +1,130 @@
+﻿@model BrnMall.Web.MallAdmin.Models.CategoryListModel
+
+@section header{
+    <title>分类列表</title>
+    <link type="text/css" rel="stylesheet" href="/Admin_Mall/Content/CSS/site.css"/>
+    <script type="text/javascript" src="/Admin_Mall/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="/Admin_Mall/Scripts/showlist.js"></script>
+    <script type="text/javascript">
+        //分类树展开/关闭
+        function categoryTree(obj, layer) {
+            var state = $(obj).attr("class");
+            if (state == "open") {
+                $(obj).parent().parent().nextAll().each(function (index) {
+                    var flag = parseInt($(this).attr("layer")) - layer;
+                    if (flag == 1) {
+                        $(this).show();
+                    }
+                    else if (flag == 0) {
+                        return false;
+                    }
+                })
+                $(obj).removeClass("open").addClass("close");
+            }
+            else if (state == "close") {
+            $(obj).parent().parent().nextAll().each(function (index) {
+                if (parseInt($(this).attr("layer")) > layer) {
+                    $(this).hide();
+                    $(this).find("th span").each(function (i) {
+                        if ($(this).attr("class") != "") {
+                            $(this).removeClass("close").addClass("open");
+                        }
+                    })
+                }
+                else {
+                    return false;
+                }
+            })
+                $(obj).removeClass("close").addClass("open");
+            }
+        }
+        delMessage = "如果删除此分类则此分类下的商品也会被删除，您确定要删除吗？";
+        //显示隐藏按钮
+        $(function () {
+            $(".showOperate").click(function () {
+                if (!confirm("您确认要显示此分类吗？")) {
+                    return false;
+                }
+            });
+
+            $(".hideOperate").click(function () {
+                if (!confirm("您确认要隐藏此分类吗？")) {
+                    return false;
+                }
+            });
+        });
+    </script>
+}
+@section body{
+    <h1 class="rightH1">
+        分类管理 &gt;&gt; 分类列表
+        <div class="right"><a href="@Url.Action("addCategory")" class="menuBT"><img src="/Admin_Mall/Content/Images/add.jpg" />添加</a>
+            <div class="clear">
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </h1>
+<div class="table_top"></div>
+
+<div id="categoryTree">
+<table width="100%">
+<thead>
+<tr>
+<th align="left">分类名称</th>
+<th align="left">价格范围</th>
+<th width="60" align="left">显示</th>
+<th width="50" align="left">排序</th>
+<th width="262" align="left">管理操作</th>
+</tr>
+</thead>
+<tbody>
+    @foreach (CategoryInfo info in Model.CategoryList)
+    {
+        bool isHasChild = info.HasChild == 1;
+<tr layer="@info.Layer">
+<th>
+@Html.Raw(CommonHelper.GetHtmlSpan(info.Layer - 1)) 
+<span  @if (isHasChild){ <text> class="close"</text>} onclick="categoryTree(this,@info.Layer)"></span>
+@info.Name
+</th>
+<td>@info.PriceRange</td>
+<td>
+    @if (info.IsShow == 0)
+    {
+        @:否 
+    }
+    else
+    {
+        @:是
+    }
+</td>
+<td>@info.DisplayOrder</td>
+<td>
+@if (!isHasChild)
+{
+<a href="@Url.Action("AttributeGroupList", new { cateid = info.CateId })" class="editOperate">[属性分组]</a>
+<a href="@Url.Action("AttributeList", new { cateid = info.CateId })" class="editOperate">[属性列表]</a>
+}
+<a href="@Url.Action("editCategory", new { cateid = info.CateId})" class="editOperate">[修改]</a>
+@if (!isHasChild)
+{
+    if (info.IsShow == 0)
+    {
+    @Html.ActionLink("[显示]", "showCategory", new { cateid = info.CateId }, new { @class = "editOperate showOperate" })
+    }
+    else
+    {
+    @Html.ActionLink("[隐藏]", "hideCategory", new { cateid = info.CateId }, new { @class = "editOperate hideOperate" })
+    }
+    <a href="@Url.Action("delCategory", new { cateid = info.CateId })" class="deleteOperate">[删除]</a>
+}
+  </td>
+</tr>
+        }
+</tbody>
+</table>
+</div>
+
+<div class="table_bottom"></div>
+    }

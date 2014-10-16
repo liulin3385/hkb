@@ -1,0 +1,15 @@
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.csprojResolveAssemblyReference.cache
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.pdb
+C:\Users\ZhangMeng\Desktop\工作\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.dll
+C:\Users\ZhangMeng\Desktop\工作\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.pdb
+C:\Users\ZhangMeng\Desktop\工作\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.dll
+C:\Users\ZhangMeng\Desktop\工作\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.pdb
+C:\Users\ZhangMeng\Desktop\工作\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.csprojResolveAssemblyReference.cache
+D:\hkb\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.dll
+D:\hkb\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.EventStrategy.Timer.pdb
+D:\hkb\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.csprojResolveAssemblyReference.cache
+D:\hkb\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.dll
+D:\hkb\BrnMall\Strategies\BrnMall.EventStrategy.Timer\obj\Debug\BrnMall.EventStrategy.Timer.pdb

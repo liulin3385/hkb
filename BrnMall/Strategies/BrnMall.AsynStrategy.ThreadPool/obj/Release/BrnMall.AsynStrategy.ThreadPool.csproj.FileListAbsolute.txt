@@ -1,0 +1,5 @@
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.AsynStrategy.ThreadPool.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.AsynStrategy.ThreadPool.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.AsynStrategy.ThreadPool\obj\Release\BrnMall.AsynStrategy.ThreadPool.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.AsynStrategy.ThreadPool\obj\Release\BrnMall.AsynStrategy.ThreadPool.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.AsynStrategy.ThreadPool\obj\Release\BrnMall.AsynStrategy.ThreadPool.csprojResolveAssemblyReference.cache

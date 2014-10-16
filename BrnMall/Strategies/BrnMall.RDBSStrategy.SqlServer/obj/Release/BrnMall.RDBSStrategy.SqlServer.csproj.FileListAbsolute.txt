@@ -1,0 +1,5 @@
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.RDBSStrategy.SqlServer.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.RDBSStrategy.SqlServer.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RDBSStrategy.SqlServer\obj\Release\BrnMall.RDBSStrategy.SqlServer.dll
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RDBSStrategy.SqlServer\obj\Release\BrnMall.RDBSStrategy.SqlServer.pdb
+C:\Users\ZhangMeng\Desktop\BrnMall\Strategies\BrnMall.RDBSStrategy.SqlServer\obj\Release\BrnMall.RDBSStrategy.SqlServer.csprojResolveAssemblyReference.cache
