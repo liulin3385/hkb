@@ -8,5 +8,6 @@ C:\Users\ZhangMeng\Desktop\工作\BrnMall\Libraries\BrnMall.Core\obj\Debug\BrnMa
 C:\Users\ZhangMeng\Desktop\工作\BrnMall\Libraries\BrnMall.Core\obj\Debug\BrnMall.Core.pdb
 D:\hkb\BrnMall\Libraries\BrnMall.Core\bin\Debug\BrnMall.Core.dll
 D:\hkb\BrnMall\Libraries\BrnMall.Core\bin\Debug\BrnMall.Core.pdb
+D:\hkb\BrnMall\Libraries\BrnMall.Core\obj\Debug\BrnMall.Core.csprojResolveAssemblyReference.cache
 D:\hkb\BrnMall\Libraries\BrnMall.Core\obj\Debug\BrnMall.Core.dll
 D:\hkb\BrnMall\Libraries\BrnMall.Core\obj\Debug\BrnMall.Core.pdb

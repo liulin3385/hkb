@@ -14,6 +14,6 @@ C:\Users\ZhangMeng\Desktop\工作\BrnMall\Strategies\BrnMall.SessionStrategy.Asp
 C:\Users\ZhangMeng\Desktop\工作\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Debug\BrnMall.SessionStrategy.AspNetCache.csprojResolveAssemblyReference.cache
 D:\hkb\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SessionStrategy.AspNetCache.dll
 D:\hkb\BrnMall\Presentation\BrnMall.Web\bin\BrnMall.SessionStrategy.AspNetCache.pdb
+D:\hkb\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Debug\BrnMall.SessionStrategy.AspNetCache.csprojResolveAssemblyReference.cache
 D:\hkb\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Debug\BrnMall.SessionStrategy.AspNetCache.dll
 D:\hkb\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Debug\BrnMall.SessionStrategy.AspNetCache.pdb
-D:\hkb\BrnMall\Strategies\BrnMall.SessionStrategy.AspNetCache\obj\Debug\BrnMall.SessionStrategy.AspNetCache.csprojResolveAssemblyReference.cache
