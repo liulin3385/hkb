@@ -217,237 +217,166 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="container">
         <div class="topbox">
             <div class="smenu">
-                <div class="menubox menubox2">
-                    <div class="menutit"><a href="">大堂用品</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox">
-                    <div class="menutit"><a href="">客房用品</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox menubox2">
-                    <div class="menutit"><a href="">餐饮用品</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox">
-                    <div class="menutit"><a href="">酒店家具</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox menubox2">
-                    <div class="menutit"><a href="">厨房设备</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox">
-                    <div class="menutit"><a href="">装修装饰</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox menubox2">
-                    <div class="menutit"><a href="">清洁设备/清洁用品</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="menubox">
-                    <div class="menutit"><a href="">酒店其他配套产品</a></div>
-                    <div class="menucon">
-                        <ul>
-                            <li><a href="">迎宾地毯</a></li>
-                            <li><a href="">雨伞架3</a></li>
-                            <li><a href="">雨伞</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="smenu_all"><a href="">按照酒店用品城商铺查看商品</a></div>
-            </div>
-            <div class="top_center">
-                <div class="banner">
-                    <div class="wrapper">
-                        <div id="focus">
-                            <ul>
-                                @{
-    BannerInfo[] bannerList = Banners.GetHomeBannerList();
-}
-@foreach (BannerInfo info in bannerList)
-{
-    <li><a href="@info.Url" target="_blank"><img border="0" src="/Upload/Banner/@info.Img" /></a></li>
-}
-                            </ul>
-                        </div><!--focus end-->
-                    </div><!-- wrapper end -->
-                </div>
-                <div class="weihuo">
-                    <div class="wh_tit">
-                        <a href=""><img src="images/g_whqc.jpg" alt="" /></a>
-                    </div>
-                    <div class="weihuo_con">
-                        <div class="weuhuoli">
-                            <div class="imgbox">
-                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
-                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                @{ int ci = 0;
+                    int cparentid = 0;}
+                @foreach (CategoryInfo info in Categories.GetCategoryList())
+                {
+                    if (info.ParentId == 0)
+                    { //根分类
+                        if (ci > 0)
+                        {
+                            @:</ul></div></div>
+                        }
+                        if (ci%2 == 0)
+                        {
+                            @:<div class="menubox menubox2">
+                        }
+                        else
+                        {
+                            @:<div class="menubox">
+                        }
+                        ci++;
+                        <div class="menutit"><a href="@Url.Action("Category", "Catalog", new RouteValueDictionary {{"cateId", info.CateId}})">@info.Name</a></div>
+                    }
+                    else
+                    {
+                        if (cparentid == 0)
+                        {
+                            @:<div class="menucon"><ul>
+                         }
+                        <li><a href="@Url.Action("Category", "Catalog", new RouteValueDictionary {{"cateId", info.CateId}})">@info.Name</a></li>
+                    }
+                    cparentid = info.ParentId;
+                }
+</ul>
+</div>
+</div><div class="smenu_all"><a href="">按照酒店用品城商铺查看商品</a></div>
+</div>
+                            <div class="top_center">
+                                <div class="banner">
+                                    <div class="wrapper">
+                                        <div id="focus">
+                                            <ul>
+                                                @{
+                        BannerInfo[] bannerList = Banners.GetHomeBannerList();
+                                                }
+                                                @foreach (BannerInfo info in bannerList)
+                    {
+                                                    <li><a href="@info.Url" target="_blank"><img border="0" src="/Upload/Banner/@info.Img" /></a></li>
+                    }
+                                            </ul>
+                                        </div><!--focus end-->
+                                    </div><!-- wrapper end -->
+                                </div>
+                                <div class="weihuo">
+                                    <div class="wh_tit">
+                                        <a href=""><img src="images/g_whqc.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="weihuo_con">
+                                        <div class="weuhuoli">
+                                            <div class="imgbox">
+                                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
+                                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                                            </div>
+                                            <div class="wh_detail">
+                                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
+                                                <div class="price">
+                                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="weuhuoli">
+                                            <div class="imgbox">
+                                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
+                                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                                            </div>
+                                            <div class="wh_detail">
+                                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
+                                                <div class="price">
+                                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="weuhuoli">
+                                            <div class="imgbox">
+                                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
+                                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                                            </div>
+                                            <div class="wh_detail">
+                                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
+                                                <div class="price">
+                                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="weuhuoli">
+                                            <div class="imgbox">
+                                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
+                                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                                            </div>
+                                            <div class="wh_detail">
+                                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
+                                                <div class="price">
+                                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="weuhuoli">
+                                            <div class="imgbox">
+                                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
+                                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
+                                            </div>
+                                            <div class="wh_detail">
+                                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
+                                                <div class="price">
+                                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="wh_detail">
-                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
-                                <div class="price">
-                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
+                            <div class="top_right">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td><img src="images/g_jyaq.jpg" alt="" /></td>
+                                        <td><img src="images/g_mjbz.jpg" alt="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="leiji" colspan="2">
+                                            <div class="year">@DateTime.Now.Year</div>
+                                            <div class="month">@DateTime.Now.Month</div>
+                                            <div class="day">@DateTime.Now.Day</div>
+                                            <div class="leijicon">
+                                                <p>今日总商品<span>2884197</span>件</p>
+                                                <p>最新新增加<span>196</span>件</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="temai">
+                                    <div class="temai1"><a href=""><img src="images/g_adpic1.jpg" alt="" /></a></div>
+                                    <div class="temai2"><a href=""><img src="images/g_adpic2.jpg" alt="" /></a></div>
+                                    <div class="temai3"><a href=""><img src="images/g_adpic3.jpg" alt="" /></a></div>
+                                    <div class="gengduo"><a href="" class="more">更多专场特卖></a></div>
+                                </div>
+                                <div class="news">
+                                    <div class="news_tit"><a href="" class="more">+更多</a><span>新闻公告</span></div>
+                                    <ul>
+                                        @{
+                                            DataTable homeNewsList1 = News.GetHomeNewsList(1, 5);
+                                        }
+                                        @foreach (DataRow row in homeNewsList1.Rows)
+                                        {
+                                            <li><a href="@Url.Action("Details", "News", new RouteValueDictionary { { "newsId", row["newsid"] } })">@row["title"]</a></li>
+                                        }
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="weuhuoli">
-                            <div class="imgbox">
-                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
-                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
-                            </div>
-                            <div class="wh_detail">
-                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
-                                <div class="price">
-                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weuhuoli">
-                            <div class="imgbox">
-                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
-                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
-                            </div>
-                            <div class="wh_detail">
-                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
-                                <div class="price">
-                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weuhuoli">
-                            <div class="imgbox">
-                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
-                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
-                            </div>
-                            <div class="wh_detail">
-                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
-                                <div class="price">
-                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="weuhuoli">
-                            <div class="imgbox">
-                                <a href=""><img src="images/g_wh_product.jpg" alt="" /></a>
-                                <div class="cunhuo"><p>仅剩：<span>165</span>件</p></div>
-                            </div>
-                            <div class="wh_detail">
-                                <div class="wh_name"><a href="">德尔玛垂直式夏..</a></div>
-                                <div class="price">
-                                    <p><span class="xianjia">￥80.00</span><span class="yuanjia">125.00</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="top_right">
-                <table cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td><img src="images/g_jyaq.jpg" alt="" /></td>
-                        <td><img src="images/g_mjbz.jpg" alt="" /></td>
-                    </tr>
-                    <tr>
-                        <td class="leiji" colspan="2">
-                            <div class="year">2013</div>
-                            <div class="month">09</div>
-                            <div class="day">13</div>
-                            <div class="leijicon">
-                                <p>今日总商品<span>2884197</span>件</p>
-                                <p>最新新增加<span>196</span>件</p>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <div class="temai">
-                    <div class="temai1"><a href=""><img src="images/g_adpic1.jpg" alt="" /></a></div>
-                    <div class="temai2"><a href=""><img src="images/g_adpic2.jpg" alt="" /></a></div>
-                    <div class="temai3"><a href=""><img src="images/g_adpic3.jpg" alt="" /></a></div>
-                    <div class="gengduo"><a href="" class="more">更多专场特卖></a></div>
-                </div>
-                <div class="news">
-                    <div class="news_tit"><a href="" class="more">+更多</a><span>新闻公告</span></div>
-                    <ul>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                        <li><a href="">凡客限时9折单卖，欢迎您选购 </a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         <div class="adbox"><a href=""><img src="images/g_ad.jpg" alt="" /></a></div>
         <div class="tuijianprobox">
             <div class="tjfenlei">
@@ -1185,11 +1114,13 @@
                 <div class="zhaoshang">
                     <div class="zhaoshang_tit"><a href="" class="more">+更多</a>行业资讯</div>
                     <ul>
-                        <li><a href=""><span>[10-13]</span> 浙江衢州华锐节能炉头诚招全国代理商</a></li>
-                        <li><a href=""><span>[10-13]</span> 浙江衢州华锐节能炉头诚招全国代理商</a></li>
-                        <li><a href=""><span>[10-13]</span> 浙江衢州华锐节能炉头诚招全国代理商</a></li>
-                        <li><a href=""><span>[10-13]</span> 浙江衢州华锐节能炉头诚招全国代理商</a></li>
-                        <li><a href=""><span>[10-13]</span> 浙江衢州华锐节能炉头诚招全国代理商</a></li>
+                        @{
+                            DataTable homeNewsList = News.GetHomeNewsList(2, 5);
+                        }
+                        @foreach (DataRow row in homeNewsList.Rows)
+                        {
+                            <li><a href="@Url.Action("Details", "News", new RouteValueDictionary { { "newsId", row["newsid"] } })"><span>[@Convert.ToDateTime(row["addtime"]).ToString("MM-dd")]</span>@row["title"]</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -1198,43 +1129,37 @@
 
         <div class="zhinan autohei">
             <div class="zlzce left">
-                <ul>
-                    <li><strong>新手指南</strong></li>
-                    <li>注册新用户</li>
-                    <li>网站订购流程</li>
-                </ul>
-                <ul>
-                    <li>
-                        <strong>
-                            如何付款/退款
-
-                        </strong>
-                    </li>
-                    <li>支付方式</li>
-                    <li>如何办理退款</li>
-                </ul>
-                <ul>
-                    <li><strong>配送方式</strong></li>
-                    <li>如何选择物流公司</li>
-                    <li>配送范围及配送时间</li>
-                    <li>配送费收取标准</li>
-                </ul>
-                <ul>
-                    <li>
-                        <strong>
-                            售后服务
-
-                        </strong>
-                    </li>
-                    <li>退换货政策</li>
-                    <li>如何办理退换货</li>
-                </ul>
-                <ul>
-                    <li><strong>帮助中心</strong></li>
-                    <li>常见热点问题</li>
-                    <li>联系我们</li>
-                    <li>投诉与建议</li>
-                </ul>
+                @{
+    int flag = 1;
+    foreach (HelpInfo info in WorkContext.HelpList)
+    {
+        if (info.Pid != 0)
+        {
+            if (info.Url.Length == 0)
+            {
+                <li><a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a></li>
+            }
+            else
+            {
+                                <li><a href="@info.Url">@info.Title</a></li>
+                            }
+                        }
+                        else
+                        {
+                            if (flag != 1)
+                            {
+                                @:</ul>
+                    }
+                    @:<ul>
+            <li><strong>@info.Title</strong></li>
+                            flag++;
+                        }
+                    }
+                    if (WorkContext.HelpList.Count > 0)
+                    {
+                        @:</ul>                  
+                }
+                }
             </div>
             <div class="youjian ecode">
                 <div class="img"><img src="images/g_ecode.jpg" alt="" /></div>
