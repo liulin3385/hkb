@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+    <div class="footer">
+        <div class="zhinan autohei">
+            <div class="zlzce left">
+                @{
+                    int flag = 1;
+                    foreach (HelpInfo info in WorkContext.HelpList)
+                    {
+                        if (info.Pid != 0)
+                        {
+                            if (info.Url.Length == 0)
+                            {
+                    <li><a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a></li>
+                            }
+                            else
+                            {
+                    <li><a href="@info.Url">@info.Title</a></li>
+                            }
+                        }
+                        else
+                        {
+                            if (flag != 1)
+                            {
+                    @: </ul>
+                    }
+                    @: <ul><li><strong>@info.Title</strong></li>
+                    flag++;
+                        }
+                    }
+                }
+            </div>
+            <div class="youjian ecode">
+                <div class="img">
+                    <img src="/Images/g_ecode.jpg" alt="" /></div>
+                <div class="ecodecon">
+                    <div class="ecodetop">扫描二维码 关注汉口北</div>
+                    <div class="dianhua">
+                        <p>客户服务电话</p>
+                        <p>4000-800-900</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blank"></div>
+
+
+        <div class="footer">
+            <div class="yxhkdb">
+                @foreach (FriendLinkInfo info in WorkContext.FriendLinkList)
+                {                           
+                    <a href="@info.Url" target="@info.Target" title="@info.Title">@info.Name</a>
+                }版权说明    © 2012 (中国)软件有限公司 版权所有
+            </div>
+            <p class="ft_bt">网络文化经营许可证：文网文[2010]040号 | 增值电信业务经营许可证：浙B2-20080224 | 信息网络传播视听节目许可证：1109364号 </p>
+            <div align="center">
+                <img src="/images/ft1.jpg" width="332" height="43" /></div>
+        </div>
+    </div>

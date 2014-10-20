@@ -1,0 +1,116 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="cntop">
+    <div class="teacent autohei2">
+        <div class="zhuce">
+            <p>
+                您好，欢迎光临@{@WorkContext.MallConfig.MallName}！[<span>
+                    @if (WorkContext.Uid < 1)
+                    {
+                        <a href="@Url.Action("Login", "Account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })">登录</a><text> | </text>
+                        <a href="@Url.Action("Register", "Account")">注册</a>
+                    }
+                    else
+                    {
+                        @:您好 @WorkContext.NickName
+                        <a href="@Url.Action("Logout", "Account")">退出</a><text> | </text>
+                        if (WorkContext.PartUserInfo.StoreId > 1)
+                        {
+                        <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "StoreAdmin" } })">店铺管理</a><text> | </text>
+                        }
+                        if (WorkContext.MallAGid > 1)
+                        {
+                        <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "MallAdmin" } })">商城管理</a>
+                        }
+                    }
+                </span>]
+            </p>
+            <p class="pk2">客户服务电话：4000-800-900</p>
+        </div>
+        <div class="hankoubtop">
+            <h3 id="jr1">
+                <a href="@Url.Action("Index", "Cart")">
+                    <img src="/images/cart.jpg" alt="" />
+                    我的购物车【<span>@WorkContext.CartProductCount</span>】</a><div id="conjr1" style="display: none;">
+                        <div class="wddingd">
+                            <p>您好，欢迎光临汉口北。请您 <strong class="red2">登录97HKB</strong></p>
+                            <ul>
+                                <li><a href="@Url.Action("OrderList", "UCenter")">&gt; 我的订单</a></li>
+                                <li><a href="@Url.Action("FavoriteProductList", "UCenter")">&gt; 我的搜藏</a></li>
+                                <li><a href="@Url.Action("ProductConsultList", "UCenter")">&gt; 我的站内消息</a></li>
+
+                            </ul>
+                            <div class="autohei">
+                                <div class="left">
+                                    <img src="/images/sy_tb2.jpg" width="134" height="22" />
+                                </div>
+                                <div class="right">
+                                    <img src="/images/sy_tb3.jpg" width="134" height="22" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </h3>
+            <h3 id="jr2">
+                <a href="#">专业市场导航</a><div id="conjr2" style="display: none;">
+                    <div class="krjiatb2">
+                        <dl>
+                            <dt>&gt; 汉口北国际交易中心</dt>
+                            <dd>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a><a href="#">酒店用品城</a>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a><a href="#">酒店用品城</a>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a><a href="#">酒店用品城</a>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a><a href="#">酒店用品城</a>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a><a href="#">酒店用品城</a>
+                                <a href="#">鞋业皮具城</a><a href="#">品牌服装城</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>&gt; 四季美农贸城</dt>
+                            <dd>
+                                <a href="#">蔬菜市场</a><a href="#">粮油市场</a><a href="#">冻品市场</a><br />
+                                <a href="#">蔬菜市场</a><a href="#">粮油市场</a><a href="#">冻品市场</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>&gt; 四季美农贸城</dt>
+                            <dd><a href="#">五金电器城</a><a href="#">窗帘大世界</a><a href="#">灯饰城</a></dd>
+                        </dl>
+                        <ul>
+                            <li>&gt; 中国家俱CBD</li>
+                            <li>&gt; 华中渔具市场</li>
+                            <li>&gt; 汽车大世界</li>
+                            <li>&gt; 长江金属交易中心</li>
+                            <li>&gt; 农业装备物流交易中心</li>
+                            <li>&gt; 国际数码城</li>
+                        </ul>
+                    </div>
+                </div>
+            </h3>
+            <h3 class="sy_spf">全部商品分类</h3>
+
+
+        </div>
+    </div>
+</div>
+<div class="hktait">
+    <div class="logo left">
+        <img src="/images/logo.jpg" width="244" height="59" />
+    </div>
+    <div class="spsousuo">
+        <div class="dpqh">
+            <h3 class="hover">商品</h3>
+            <h3>店铺</h3>
+            <p>热搜：<a href="#" onclick="mallSearch('女装新款')">女装新款</a><a href="#" onclick="mallSearch('女装新款')">男装T恤</a><a href="#" onclick="mallSearch('女装新款')">女装新款</a><a href="#" onclick="mallSearch('男装T恤')">男装T恤</a></p>
+        </div>
+        <form>
+            <input type="text" id="keyword" name="keyword" class="sosp" autocomplete="off" onkeydown="javascript:if(event.keyCode==13) mallSearch(document.getElementById('keyword').value);" value="@WorkContext.SearchWord" />
+            <input name="" type="button" class="soan" onclick="mallSearch(document.getElementById('keyword').value)" />
+        </form>
+    </div>
+    <div class="right">
+        <img src="/images/s_t7.jpg" width="199" height="65" />
+    </div>
+</div>

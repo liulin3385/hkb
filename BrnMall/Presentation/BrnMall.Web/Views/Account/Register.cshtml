@@ -1,176 +1,52 @@
 ﻿@model BrnMall.Web.Models.RegisterModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>用户注册-@{@WorkContext.MallConfig.SiteTitle}</title>
-    @WorkContext.MallConfig.SEOKeyword
-    @WorkContext.MallConfig.SEODescription
-    <link href="@{@WorkContext.CSSDir}/CSS/all.css" rel="stylesheet" type="text/css" />
+@section Head{
     <script src="@{@WorkContext.ScriptDir}/Scripts/utils.js" type="text/javascript"></script>
-    <script src="@{@WorkContext.ScriptDir}/Scripts/common.js" type="text/javascript"></script>
     <script src="@{@WorkContext.ScriptDir}/Scripts/account.js" type="text/javascript"></script>
     <script type="text/javascript">
         var returnUrl = "@Model.ReturnUrl";
         var shadowName = "@Model.ShadowName";
     </script>
-</head>
+}
 <body id="body">
-    <div id="topInfo">
-        <div class="box">
-            <div class="left">您好,欢迎访问 @WorkContext.MallConfig.MallName</div>
-            <div class="right">
-            @if (WorkContext.Uid < 1)
-            {
-                <a href="@Url.Action("Login", "Account", new RouteValueDictionary { { "returnUrl", WorkContext.Url } })" class="A_b">[登录]</a>
-                <a href="@Url.Action("Register", "Account")" class="A_b">[注册]</a>
-            }
-            else
-            {
-                 @:您好 @WorkContext.NickName 
-                <a href="@Url.Action("Logout", "Account")" class="A_b">[退出]</a>
-                if (WorkContext.PartUserInfo.StoreId > 1)
-                {
-                <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "StoreAdmin" } })" class="A_b">[店铺管理]</a>
-                }
-                if (WorkContext.MallAGid > 1)
-                {
-                <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "MallAdmin" } })" class="A_b">[商城管理]</a>
-                }
-                <a href="@Url.Action("OrderList", "UCenter")" class="A_b">[我的订单]</a>
-            }
-            <a href="@Url.Action("Index", "Cart")" class="A_b">[购物车(@WorkContext.CartProductCount)]</a>
+    <div id="warp">
+        <div class="autohei">
+            <div align="center">
+                <img src="../images/zhuce.jpg" width="998" height="34" /></div>
+            <div class="blank"></div>
+            <div class="bord1 zhuc1">
+                <h5>感谢您的注册，请完善您的个人信息,方便购物物流快递。</h5>
+                <div class="gerenxinxi">
+@*                    <div class="xixzhil">
+                        <h2 class="xit">个人信息</h2>
+                    </div>*@
+                    <form name="registerForm" action="">
+                        <div><strong class="left">帐号：</strong><input type="text" name="accountName" class="inpt1" size="30" value="" /><span class="red">*</span></div>
+                        <div><strong class="left">密码：</strong><input type="password" name="password" value="" class="inpt1" size="30" /><span class="red">*</span></div>
+                        <div><strong class="left">确认密码：</strong>
+                            <input type="password" name="confirmPwd" value="" class="inpt1" size="30" /><span class="red">*</span></div>
+                        @if (Model.IsVerifyCode)
+                        {
+                            <div>
+                                <strong class="left">验证码：</strong><input type="text" name="verifyCode" autocomplete="off" />
+                                <img id="verifyImage" style="cursor: hand" height="24" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" />
+                            </div>
+                        }
+                        <div>
+                            <div class="autohei co6">
+                             <a href="@Url.Action("login", "account")">直接登录</a>
+                             <a href="@Url.Action("FindPwd")">忘记密码？</a>
+                            </div>
+                        </div>
+                        <div align="center">
+                            <a href="#" class="bt_b" style="margin: 0; padding: 3px 30px;" onclick="register()">
+                                <img src="../images/dz_a3.jpg" /></a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="bigBox">
-        <div class="box" id="header">
-            <a href="#" id="logo" class="left"><img src="@{@WorkContext.ImageDir}/Images/logo.jpg" /></a>
-            <div id="search" class="right">
-                <input type="text" id="keyword" name="keyword" autocomplete="off" onkeydown="javascript:if(event.keyCode==13) mallSearch(document.getElementById('keyword').value);" value="@WorkContext.SearchWord" />
-                <input type="image" src="@{@WorkContext.ImageDir}/Images/searchBT.jpg" class="bt_b" onclick="mallSearch(document.getElementById('keyword').value)" />
-                <div class="clear">
-            </div>
-            </div>
-            <div class="clear"></div>
         </div>
     </div>
-    <div class="bigBox" id="nav">
-        <ul class="box">
-            @foreach (NavInfo info in WorkContext.NavList)
-            {
-            <li><a href="@info.Url">@info.Name</a></li>
-            }
-            <div class="clear"></div>
-        </ul>
-    </div>
-    <div class="box" id="content">
-            <div class="bilB" style="padding:5% 5% 5% 320px;">
-
-
-         <form name="registerForm" action="">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bilLogin">
-                    <tr>
-                        <td width="60">帐&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</td>
-                        <td width="250">
-                            <input type="text" name="accountName" value=""/>
-                        </td>
-                        <td> &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
-                        <td>
-                            <input type="password" name="password" value=""/>
-                        </td>
-                        <td> &nbsp;</td>
-                    </tr>
-                   <tr>
-                        <td>确认密码：</td>
-                        <td>
-                            <input type="password" name="confirmPwd" value=""/>
-                        </td>
-                        <td> &nbsp;</td>
-                    </tr>
-                @if (Model.IsVerifyCode)
-                { 
-                    <tr>
-                        <td>验证码：</td>
-                        <td>
-                            <input type="text" name="verifyCode" autocomplete="off" />
-                        </td>
-                        <td>
-                                <img id="verifyImage" style="cursor:hand" height="24" title="点击刷新验证码" onclick="this.src='/tool/verifyimage?time=' + new Date()" src="/tool/verifyimage" />
-                        </td>
-                    </tr>
-                }
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td><a href="#" class="bt_b" style="margin: 0; padding: 3px 30px;" onclick="register()">注册</a></td>
-                        <td> &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>&nbsp; </td>
-                        <td colspan="2">我已有帐号 <a href="@Url.Action("login", "account")">直接登录</a><br /><a href="@Url.Action("FindPwd")">忘记密码？</a></td>
-                    </tr>
-                </table>
-                </form>
-
-
-            </div>
-    </div>
-        <div id="footer" class="box">
-        <div class="boxInner">
-        @{
-            int flag = 1;
-            foreach (HelpInfo info in WorkContext.HelpList)
-            {
-                if (info.Pid != 0)
-                {
-                    if (info.Url.Length == 0)
-                    {
-                    <a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a>
-                    }
-                    else
-                    {
-                    <a href="@info.Url">@info.Title</a>
-                    }
-                }
-                else
-                {
-                    if (flag != 1)
-                    {
-                       @:</div>
-                    }
-                    @:<div class="footerBox"><h3>@info.Title</h3>
-                    flag++;
-                }
-            }
-            if (WorkContext.HelpList.Count > 0)
-            {
-                @:</div>
-            }
-            }
-            <div class="clear">
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="links">
-            @foreach (FriendLinkInfo info in WorkContext.FriendLinkList)
-            {
-            <a href="@info.Url" target="@info.Target" title="@info.Title">@info.Name</a> @:|
-            }
-        </div>
-        <div style=" text-align:center;">
-            共执行 @WorkContext.ExecuteCount 个查询，用时 @WorkContext.ExecuteTime 秒,会员 @WorkContext.OnlineMemberCount 人 游客 @WorkContext.OnlineGuestCount 人 共 @WorkContext.OnlineUserCount 人
-            <br />
-            程序版本 @WorkContext.MallVersion 版权所有 @WorkContext.MallCopyright
-        </div>
-        @Html.Raw(WorkContext.ExecuteDetail)
-        </div>
-@WorkContext.MallConfig.Script
 </body>
-</html>
