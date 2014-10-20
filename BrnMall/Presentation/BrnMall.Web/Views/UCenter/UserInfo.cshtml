@@ -1,15 +1,8 @@
 ﻿@model BrnMall.Web.Models.UserInfoModel
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>用户信息-@{@WorkContext.MallConfig.SiteTitle}</title>
-    @WorkContext.MallConfig.SEOKeyword
-    @WorkContext.MallConfig.SEODescription
-    <link href="@{@WorkContext.CSSDir}/CSS/all.css" rel="stylesheet" type="text/css" />
+@section Head{
     <script src="@{@WorkContext.ScriptDir}/Scripts/utils.js" type="text/javascript"></script>
     <script src="@{@WorkContext.ScriptDir}/Scripts/region.js" type="text/javascript"></script>
     <script src="@{@WorkContext.ScriptDir}/Scripts/ucenter.user.js" type="text/javascript"></script>
@@ -18,209 +11,135 @@
         cityId = @ViewData["cityId"]; //市id
         countyId = @ViewData["countyId"]; //县或区id
     </script>
-</head>
-<body id="body">
-    <div id="topInfo">
-        <div class="box">
-            <div class="left">您好,欢迎访问 @WorkContext.MallConfig.MallName</div>
-            <div class="right">
-            您好 @WorkContext.NickName 
-            <a href="@Url.Action("Logout", "Account")" class="A_b">[退出]</a>
-            @if (WorkContext.PartUserInfo.StoreId > 1)
-            {
-            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "StoreAdmin" } })" class="A_b">[店铺管理]</a>
-            }
-            @if (WorkContext.MallAGid > 1)
-            {
-            <a href="@Url.Action("Index", "Home", new RouteValueDictionary { { "area", "MallAdmin" } })" class="A_b">[商城管理]</a>
-            }
-            <a href="@Url.Action("OrderList", "UCenter")" class="A_b">[我的订单]</a>
-            <a href="@Url.Action("Index", "Cart")" class="A_b">[购物车(@WorkContext.CartProductCount)]</a>
+}
+
+<div id="warp">
+    <div class="autohei">
+        <div align="center">
+            <img src="../images/grzx_t.jpg" width="998" height="34" /></div>
+        <div class="blank"></div>
+        <div class="autohei">
+            <div class="bz_zn1 left">
+                <div class="bz_szxi b">
+                    <h3>> 我的交易</h3>
+                    <ul>
+                        <li><a href="@Url.Action("../Cart")" target="_blank">·我的购物车</a></li>
+                        <li><a href="@Url.Action("OrderList")">·我的订单</a></li>
+                        <li><a href="@Url.Action("PayCreditLogList")">·我的@{@WorkContext.PayCreditName}</a></li>
+                    </ul>
+                    <h3>> 收藏夹</h3>
+                    <ul>
+                        <li><a href="@Url.Action("FavoriteProductList")">·商品收藏</a></li>
+                        <li><a href="@Url.Action("FavoriteStoreList")">·店铺收藏</a></li>
+                    </ul>
+                    <h3 class="red">> 个人设置</h3>
+                    <ul>
+                        <li><a href="@Url.Action("SafeInfo")">·账户安全</a></li>
+                        <li class="red"><a href="@Url.Action("UserInfo")">·个人信息</a></li>
+                        <li><a href="@Url.Action("ShipAddressList")">·收货地址</a></li>
+                        <li><a href="@Url.Action("CouponList")">·优惠卷</a></li>
+                    </ul>
+                    <h3>> 站内消息</h3>
+                    <ul>
+                        <li><a href="sjx.html">·收件箱</a></li>
+                        <li><a href="@Url.Action("ProductReviewList")">·购买咨询</a></li>
+                        <li><a href="@Url.Action("ProductConsultList")">·商品评价</a></li>
+                        <li><a href="fsxx.html">·给管理员发送消息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bz_keen right">
+                <div class="grxixn b">
+                    <div class="ninhao">
+                        <p>您好：<span class="red">qingfeng</span>，欢迎进入用户中心，您目前购物车有 <span class="red2">4</span> 款产品未购买，<span class="red2">5</span> 笔订单正在进行中。</p>
+                    </div>
+                    <div class="xixzhil">
+                        <h2>用户信息</h2>
+                    </div>
+                    <div class="xi_xqing b autohei">
+                        <form name="userInfoForm" action="">
+                            <div class="ximriqi">
+                                <ul>
+                                    <li><strong>用户名:</strong>
+                                        @if (Model.UserInfo.UserName.Length > 0)
+                                        {
+                                            @Model.UserInfo.UserName
+                                        }
+                                        else
+                                        {
+                                            <input type="text" name="userName" value="" />
+                                        } &nbsp;&nbsp;&nbsp;@Model.UserRankInfo.Title</li>
+                                    <li><strong>昵称:</strong>
+                                        <input type="text" name="nickName" value="@Model.UserInfo.NickName" class="xm1"/>
+                                        <span class="red">*</span></li>
+                                    <li><strong>真实姓名: </strong>
+                                        <input type="text" name="realName" value="@Model.UserInfo.RealName" class="xm1"/></li>
+                                    <li><strong>性别:</strong>
+                                        <input type="radio" name="gender" value="1" @{if (Model.UserInfo.Gender == 1)
+                                                                                    {<text>checked="checked"</text>}}/>男
+                                        <input type="radio" name="gender" value="2" @{if (Model.UserInfo.Gender == 2)
+                                                                                    {<text>checked="checked"</text>}}/>女
+                                        <input type="radio" name="gender" value="0" @{if (Model.UserInfo.Gender == 0)
+                                                                                    {<text>checked="checked"</text>}}/>未知
+                                    </li>
+                                    <li><strong>身份证号码:</strong><input type="text" name="idCard" value="@Model.UserInfo.IdCard" class="xm1"/></li>
+                                    <li><strong>出生日期: </strong><input type="text" name="bday" value="@Model.UserInfo.Bday.ToString("yyyy-MM-dd")" /></li>
+                                </ul>
+                            </div>
+                            <div class="ximriqi bjys">
+                                <ul>
+                                                             <li><strong>所在区域: </strong>
+                               <select id="provinceId" name="provinceId">
+                                <option selected="selected" value="-1">请选择</option>
+                                </select>
+                                <select id="cityId" name="cityId">
+                                <option selected="selected" value="-1">请选择</option>
+                                </select>
+                                <select id="regionId" name="regionId">
+                                <option selected="selected" value="-1">请选择</option>
+                                </select>
+                            </li> 
+                                    <li><strong>联系地址:</strong>
+                                        <input name="address" type="text" class="dk1"  value="@Model.UserInfo.Address"/></li>
+                                    <li><strong>简介: </strong>
+                                        <textarea rows="5" cols="40" name="bio" style="width: 500px;">@Model.UserInfo.Bio</textarea></li>
+                                </ul>
+                            </div>
+                            <div align="center" style="padding: 20px 0;"><a href="#" onclick="editUser()">
+                                <img src="../images/dz_a3.jpg" width="69" height="28" /></a></div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="clear"></div>
     </div>
-    <div class="bigBox">
-        <div class="box" id="header">
-            <a href="#" id="logo" class="left"><img src="@{@WorkContext.ImageDir}/Images/logo.jpg" /></a>
-            <div id="search" class="right">
-                <input type="text" id="searchWord" value="@WorkContext.SearchWord" />
-                <input type="image" src="@{@WorkContext.ImageDir}/Images/searchBT.jpg" class="bt_b" onclick="window.location.href = '/search/?keyword='+encodeURIComponent(document.getElementById('searchWord').value)"/>
-                <div class="clear">
-            </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="bigBox" id="nav">
-        <ul class="box">
-            @foreach (NavInfo info in WorkContext.NavList)
-            {
-            <li><a href="@info.Url">@info.Name</a></li>
-            }
-            <div class="clear"></div>
-        </ul>
-    </div>
-    <div class="box" id="content">
-  <div class="left boxLeft">
-    <div class="bilBox">
-      <h2>会员中心</h2>
-      <div class="bilCon">
-        <ul class="menu">
-          <li><a href="@Url.Action("UserInfo")">用户信息</a></li>
-          <li><a href="@Url.Action("SafeInfo")">账户安全</a></li>
-          <li><a href="@Url.Action("OrderList")">我的订单</a></li>
-          <li><a href="@Url.Action("ShipAddressList")">收货地址</a></li>
-          <li><a href="@Url.Action("FavoriteProductList")">收藏商品</a></li>
-          <li><a href="@Url.Action("FavoriteStoreList")">收藏店铺</a></li>
-          <li><a href="@Url.Action("PayCreditLogList")">我的@{@WorkContext.PayCreditName}</a></li>
-          <li><a href="@Url.Action("CouponList")">优惠劵</a></li>
-          <li><a href="@Url.Action("ProductConsultList")">购买咨询</a></li>
-          <li><a href="@Url.Action("ProductReviewList")">商品评价</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="right boxRight">
+</div>
+<div class="right boxRight">
     <div class="bilB ucenterList">
-      <form name="userInfoForm" action="">
-        <table width="100%">
-            <thead>
-                <tr bgcolor="#f4f3f3"><td colspan="2">用户信息</td></tr>
-            </thead>
-            <tbody>
-<tr>
-                <td width="28%" align="right" bgcolor="#FFFFFF">用户名：</td>
-                <td  bgcolor="#FFFFFF">
-                @if (Model.UserInfo.UserName.Length > 0)
-                {
-                    @Model.UserInfo.UserName
-                }
-                else
-                {
-                    <input type="text" name="userName" value="" />
-                }
-                &nbsp;&nbsp;&nbsp;@Model.UserRankInfo.Title
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF"> 昵称：</td>
-                <td bgcolor="#FFFFFF"><input type="text" name="nickName" value="@Model.UserInfo.NickName" />
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF"> 真实姓名：</td>
-                <td bgcolor="#FFFFFF">
-                <input type="text" name="realName" value="@Model.UserInfo.RealName" />
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF"> 性别：</td>
-                <td bgcolor="#FFFFFF">
-                <input type="radio" name="gender" value="1" @{if(Model.UserInfo.Gender==1){<text>checked="checked"</text>}}/>男
-                <input type="radio" name="gender" value="2" @{if(Model.UserInfo.Gender==2){<text>checked="checked"</text>}}/>女
-                <input type="radio" name="gender" value="0" @{if(Model.UserInfo.Gender==0){<text>checked="checked"</text>}}/>未知
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF"> 身份证号码：</td>
-                <td bgcolor="#FFFFFF">
-                <input type="text" name="idCard" value="@Model.UserInfo.IdCard" />
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF">出生日期：</td>
-                <td bgcolor="#FFFFFF">
-                <input type="text" name="bday" value="@Model.UserInfo.Bday.ToString("yyyy-MM-dd")" />
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF">所在区域：</td>
-                <td bgcolor="#FFFFFF">
-                <select id="provinceId" name="provinceId">
-                <option selected="selected" value="-1">请选择</option>
-                </select>
-                <select id="cityId" name="cityId">
-                <option selected="selected" value="-1">请选择</option>
-                </select>
-                <select id="regionId" name="regionId">
-                <option selected="selected" value="-1">请选择</option>
-                </select>
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF">详细地址：</td>
-                <td bgcolor="#FFFFFF">
-                <input type="text" name="address" value="@Model.UserInfo.Address" size="50" />
-                </td>
-                </tr>
-                <tr>
-                <td align="right" bgcolor="#FFFFFF">简介：</td>
-                <td bgcolor="#FFFFFF">
-                <textarea rows="5" cols="40" name="bio">@Model.UserInfo.Bio</textarea>
-                </td>
-                </tr>
-		        <tr>
-                    <td colspan="2" align="center" bgcolor="#FFFFFF">
-                    <input type="button" value="确认修改" class="bnt_blue_1" style="border:none;" onclick="editUser()"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <form name="userInfoForm" action="">
+            <table width="100%">
+                <thead>
+                    <tr bgcolor="#f4f3f3">
+                        <td colspan="2">用户信息</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+ 
+
+
+                    <tr>
+                        <td colspan="2" align="center" bgcolor="#FFFFFF">
+                          
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </form>
     </div>
-  </div>
-  <div class="clear"></div>
 </div>
-       <div id="footer" class="box">
-        <div class="boxInner">
-        @{
-            int flag = 1;
-            foreach (HelpInfo info in WorkContext.HelpList)
-            {
-                if (info.Pid != 0)
-                {
-                    if (info.Url.Length == 0)
-                    {
-                    <a href="@Url.Action("Question", "Help", new RouteValueDictionary { { "id", info.Id } })">@info.Title</a>
-                    }
-                    else
-                    {
-                    <a href="@info.Url">@info.Title</a>
-                    }
-                }
-                else
-                {
-                    if (flag != 1)
-                    {
-                       @:</div>
-                    }
-                    @:<div class="footerBox"><h3>@info.Title</h3>
-                    flag++;
-                }
-            }
-            if (WorkContext.HelpList.Count > 0)
-            {
-                @:</div>
-            }
-            }
-            <div class="clear">
-            </div>
-        </div>
-        <div class="clear"></div>
-        <div class="links">
-            @foreach (FriendLinkInfo info in WorkContext.FriendLinkList)
-            {
-            <a href="@info.Url" target="@info.Target" title="@info.Title">@info.Name</a> @:|
-            }
-        </div>
-        <div style=" text-align:center;">
-            共执行 @WorkContext.ExecuteCount 个查询，用时 @WorkContext.ExecuteTime 秒,会员 @WorkContext.OnlineMemberCount 人 游客 @WorkContext.OnlineGuestCount 人 共 @WorkContext.OnlineUserCount 人
-            <br />
-            程序版本 @WorkContext.MallVersion 版权所有 @WorkContext.MallCopyright
-        </div>
-        @Html.Raw(WorkContext.ExecuteDetail)
-        </div>
+
 <script type="text/javascript">
     //绑定省列表的改变事件
     Event.addHandler(document.getElementById("provinceId"), "change", function (event) {
