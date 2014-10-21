@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="bz_zn1 left">
+    <div class="bz_szxi b">
+        <h3>> 我的交易</h3>
+        <ul>
+            <li><a href="@Url.Action("../Cart")" target="_blank">·我的购物车</a></li>
+            <li><a href="@Url.Action("OrderList")">·我的订单</a></li>
+            <li><a href="@Url.Action("PayCreditLogList")">·我的@{@WorkContext.PayCreditName}</a></li>
+        </ul>
+        <h3>> 收藏夹</h3>
+        <ul>
+            <li><a href="@Url.Action("FavoriteProductList")">·商品收藏</a></li>
+            <li><a href="@Url.Action("FavoriteStoreList")">·店铺收藏</a></li>
+        </ul>
+        <h3 class="red">> 个人设置</h3>
+        <ul>
+            <li><a href="@Url.Action("SafeInfo")">·账户安全</a></li>
+            <li class="red"><a href="@Url.Action("UserInfo")">·个人信息</a></li>
+            <li><a href="@Url.Action("ShipAddressList")">·收货地址</a></li>
+            <li><a href="@Url.Action("CouponList")">·优惠卷</a></li>
+        </ul>
+        <h3>> 站内消息</h3>
+        <ul>
+            <li><a href="sjx.html">·收件箱</a></li>
+            <li><a href="@Url.Action("ProductReviewList")">·购买咨询</a></li>
+            <li><a href="@Url.Action("ProductConsultList")">·商品评价</a></li>
+            <li><a href="fsxx.html">·给管理员发送消息</a></li>
+        </ul>
+    </div>
+</div>

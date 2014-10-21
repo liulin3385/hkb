@@ -102,7 +102,7 @@ function closeShipAddressBlock() {
 }
 
 //验证配送地址
-function verifyShipAddress(alias, consignee, mobile, regionId, address) {
+function verifyShipAddress(alias, consignee, mobile, phone, regionId, address) {
     if (alias == "") {
         alert("请填写昵称");
         return false;
@@ -111,16 +111,16 @@ function verifyShipAddress(alias, consignee, mobile, regionId, address) {
         alert("请填写收货人");
         return false;
     }
-    if (mobile == "" && phone == "") {
-        alert("手机号和固定电话必须填写一项");
-        return false;
-    }
     if (parseInt(regionId) < 1) {
         alert("请选择区域");
         return false;
     }
     if (address == "") {
         alert("请填写详细地址");
+        return false;
+    }
+    if (mobile == "" && phone == "") {
+        alert("手机号和固定电话必须填写一项");
         return false;
     }
     return true;
@@ -140,7 +140,7 @@ function addShipAddress() {
     var address = shipAddressForm.elements["address"].value;
     var isDefault = shipAddressForm.elements["isDefault"].checked == true ? 1 : 0;
 
-    if (!verifyShipAddress(alias, consignee, mobile, regionId, address)) {
+    if (!verifyShipAddress(alias, consignee, mobile, phone, regionId, address)) {
         return;
     }
 
@@ -188,7 +188,7 @@ function editShipAddress() {
         alert("请选择配送地址");
         return;
     }
-    if (!verifyShipAddress(alias, consignee, mobile, regionId, address)) {
+    if (!verifyShipAddress(alias, consignee, mobile, phone, regionId, address)) {
         return;
     }
 

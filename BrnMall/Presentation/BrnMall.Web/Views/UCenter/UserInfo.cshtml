@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Head{
-    <script src="@{@WorkContext.ScriptDir}/Scripts/utils.js" type="text/javascript"></script>
     <script src="@{@WorkContext.ScriptDir}/Scripts/region.js" type="text/javascript"></script>
     <script src="@{@WorkContext.ScriptDir}/Scripts/ucenter.user.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -114,32 +113,6 @@
         </div>
     </div>
 </div>
-<div class="right boxRight">
-    <div class="bilB ucenterList">
-        <form name="userInfoForm" action="">
-            <table width="100%">
-                <thead>
-                    <tr bgcolor="#f4f3f3">
-                        <td colspan="2">用户信息</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-
- 
-
-
-                    <tr>
-                        <td colspan="2" align="center" bgcolor="#FFFFFF">
-                          
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
-    </div>
-</div>
-
 <script type="text/javascript">
     //绑定省列表的改变事件
     Event.addHandler(document.getElementById("provinceId"), "change", function (event) {
@@ -167,6 +140,3 @@
         bindCountyList(cityId, document.getElementById("regionId"), countyId);
     }
 </script>
-@WorkContext.MallConfig.Script
-</body>
-</html>
